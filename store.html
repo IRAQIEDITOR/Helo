@@ -103,14 +103,6 @@
         }
         .buy-now-btn:hover { filter: brightness(1.2); box-shadow: 0 0 15px var(--gold); }
 
-        .support-info {
-            margin-top: 40px; background: rgba(201,168,76,0.05);
-            border: 1px dashed var(--gold3); padding: 25px; border-radius: 8px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
-        }
-        .info-item h4 { color: var(--gold); font-family: 'Orbitron', sans-serif; font-size: 13px; margin-bottom: 8px; }
-        .info-item p { color: rgba(255, 255, 255, 0.7); font-size: 14px; line-height: 1.5; }
-
         .footer-line { margin-top: 60px; color: var(--gold3); font-size: 14px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; }
     </style>
 </head>
@@ -138,7 +130,7 @@
                         <p class="product-desc">Every detail of precision and tools</p>
                         <div><span class="sales-badge">Purchases: <span id="count-1">17</span></span></div>
                     </div>
-                    <a href="https://t.me/Design_AfterEffects?text=Hello! I want to buy: PREMIUM DETAILS" class="buy-now-btn" onclick="updateSales(1)">BUY VIA TELEGRAM</a>
+                    <a href="https://t.me/Design_AfterEffects?text=Hello! I want to buy the *PREMIUM DETAILS* pack (Precision and Tools)" class="buy-now-btn" onclick="updateSales(1)">BUY VIA TELEGRAM</a>
                 </div>
             </section>
 
@@ -154,7 +146,7 @@
                         <p class="product-desc">Free Fire settings with optimization and frame rates</p>
                         <div><span class="sales-badge">Purchases: <span id="count-2">22</span></span></div>
                     </div>
-                    <a href="https://t.me/Design_AfterEffects?text=Hello! I want to buy: FF SETTINGS PRO" class="buy-now-btn" onclick="updateSales(2)">BUY VIA TELEGRAM</a>
+                    <a href="https://t.me/Design_AfterEffects?text=Hello! I am interested in *FREE FIRE SETTINGS* (Optimization and Frames)" class="buy-now-btn" onclick="updateSales(2)">BUY VIA TELEGRAM</a>
                 </div>
             </section>
 
@@ -170,22 +162,7 @@
                         <p class="product-desc">Design request</p>
                         <div><span class="sales-badge">Requests: <span id="count-3">31</span></span></div>
                     </div>
-                    <a href="https://t.me/Design_AfterEffects?text=Hello! I want to request a *CUSTOM DESIGN*" class="buy-now-btn" onclick="updateSales(3)">ORDER NOW</a>
-                </div>
-            </section>
-
-            <section class="support-info">
-                <div class="info-item">
-                    <h4>📦 DELIVERY</h4>
-                    <p>يتم تسليم الملفات مباشرة عبر التليجرام بصيغة XML أو AEP فور تأكيد الدفع.</p>
-                </div>
-                <div class="info-item">
-                    <h4>💳 PAYMENT</h4>
-                    <p>نقبل Zain Cash، Asiacell، و PayPal. تواصل معنا لتأكيد التحويل.</p>
-                </div>
-                <div class="info-item">
-                    <h4>🛠 IRAQI SUPPORT</h4>
-                    <p>للمساعدة الفنية أو الاستفسارات، فريق IRAQI متواجد دائماً لخدمتكم.</p>
+                    <a href="https://t.me/Design_AfterEffects?text=Hello! I want to submit a *DESIGN REQUEST*" class="buy-now-btn" onclick="updateSales(3)">ORDER NOW</a>
                 </div>
             </section>
         </div>
@@ -194,7 +171,6 @@
     </div>
 
     <script>
-        // نظام العداد الذكي
         const initialCounts = { 1: 17, 2: 22, 3: 31 };
 
         function initSales() {
@@ -216,7 +192,6 @@
             document.getElementById('count-' + id).innerText = newCount;
         }
 
-        // جزيئات الخلفية
         const pc = document.getElementById('particleCanvas');
         const ctx = pc.getContext('2d');
         let pts = [];
