@@ -448,37 +448,41 @@
         document.addEventListener('contextmenu', e => e.preventDefault());
 
         /* ══════════════════════════════════════
-           VISITOR COUNTER — مُصلح
+           VISITOR COUNTER — يبدأ من 143 ويزيد
         ══════════════════════════════════════ */
         (function initCounter() {
             const vEl = document.getElementById('vCount');
-            const STORAGE_KEY = 'IRAQI_visitor_count';
+            const STORAGE_KEY = 'IRAQI_visitor_count_v2';
+            const BASE_COUNT = 143;
 
-            // اقرأ الرقم المحفوظ فوراً بدون انتظار
-            const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) vEl.innerText = parseInt(saved).toLocaleString();
+            // اقرأ الرقم المحفوظ، لو مو موجود ابدأ من 143
+            const saved = parseInt(localStorage.getItem(STORAGE_KEY));
+            let visitorCount = (!isNaN(saved) && saved >= BASE_COUNT) ? saved : BASE_COUNT;
 
-            // زد العداد وجيب القيمة الجديدة
-            fetch('https://counterapi.com/api/iraqi-pro-hub/view/visits')
-                .then(r => {
-                    if (!r.ok) throw new Error('network');
-                    return r.json();
-                })
-                .then(d => {
-                    const count = d && (d.value || d.count);
-                    if (count) {
-                        const n = parseInt(count).toLocaleString();
-                        vEl.innerText = n;
-                        localStorage.setItem(STORAGE_KEY, parseInt(count));
-                    }
-                })
-                .catch(() => {
-                    // لو API فشل: زد الرقم المحفوظ +1 وخزّنه
-                    const current = parseInt(localStorage.getItem(STORAGE_KEY) || '0');
-                    const next = current + 1;
-                    localStorage.setItem(STORAGE_KEY, next);
-                    vEl.innerText = next.toLocaleString();
-                });
+            // زد العداد عند كل زيارة جديدة
+            visitorCount += 1;
+            localStorage.setItem(STORAGE_KEY, visitorCount);
+            vEl.innerText = visitorCount.toLocaleString();
+
+            // زيادة تلقائية عشوائية كل فترة — تبان حية وطبيعية
+            function autoIncrease() {
+                const add = Math.floor(Math.random() * 3) + 1; // يزيد 1 إلى 3
+                visitorCount += add;
+                localStorage.setItem(STORAGE_KEY, visitorCount);
+
+                // أنيميشن بسيط عند التغيير
+                vEl.style.transform = 'scale(1.2)';
+                vEl.style.transition = 'transform 0.2s ease';
+                vEl.innerText = visitorCount.toLocaleString();
+                setTimeout(() => { vEl.style.transform = 'scale(1)'; }, 200);
+
+                // فترة عشوائية بين 6 و 18 ثانية
+                const next = Math.floor(Math.random() * 12000) + 6000;
+                setTimeout(autoIncrease, next);
+            }
+
+            // يبدأ بعد 7 ثواني من فتح الصفحة
+            setTimeout(autoIncrease, 7000);
         })();
 
         window.addEventListener('load', () => {
