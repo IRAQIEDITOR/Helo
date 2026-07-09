@@ -1,322 +1,300 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IRAQI | Pro Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-        :root {
-            --gold: #ffd700;
-            --gold2: #c9a84c;
-            --gold3: #8b6914;
-            --bg: #060508;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { width: 100%; min-height: 100%; background-color: #080808; color: #fff; font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif; overflow-x: hidden; }
+
+        /* Hide default cursor on desktop */
+        @media (hover: hover) {
+            html, body, a, button { cursor: none !important; }
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* ─── CUSTOM SCROLLBAR ─── */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.25); }
 
-        body {
-            background-color: var(--bg);
-            min-height: 100vh;
-            color: #fff;
-            font-family: 'Rajdhani', sans-serif;
-            padding: 40px 20px 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
+        /* ─── CURSOR ─── */
+        #cur {
+            position: fixed; width: 10px; height: 10px; background: #fff; border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: difference; transition: width .15s ease-out, height .15s ease-out; will-change: left, top;
         }
+        #cur.big { width: 44px; height: 44px; }
+        @media (hover: none) { #cur { display: none !important; } }
 
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
-            pointer-events: none; z-index: 2;
+        /* ─── GLOW & GLASS CARD ─── */
+        .glow {
+            position: absolute; width: 600px; height: 400px; background: radial-gradient(circle, rgba(50, 100, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%); top: -100px; left: 50%; transform: translateX(-50%); pointer-events: none; z-index: 1;
         }
-
-        .bg-grid {
-            position: fixed; inset: 0; z-index: 1; pointer-events: none;
-            background-image: linear-gradient(rgba(201,168,76,0.05) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(201,168,76,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; transition: border-color 0.3s ease, transform 0.3s ease;
         }
-
-        .bg-icon { position: fixed; z-index: 5; width: 110px; pointer-events: none; opacity: 0; }
-        .bg-am {
-            bottom: 40px; left: 20px;
-            filter: drop-shadow(0 0 15px var(--gold3));
-            animation: fadeInIcon .6s ease forwards .3s, floatAnim 7s ease-in-out infinite;
+        .glass-card:hover { border-color: rgba(255, 255, 255, 0.2); }
+        .price-tag { font-family: 'Courier New', Courier, monospace; color: #999; }
+        .buy-btn {
+            background: #ffffff; color: #000000; border-radius: 50px; padding: 12px 24px; font-weight: 600; font-size: 14px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; transition: background 0.2s ease, transform 0.2s ease; border: none; width: 100%; text-transform: uppercase; cursor: pointer; letter-spacing: 1px;
         }
-        .bg-ae {
-            bottom: 40px; right: 20px;
-            filter: drop-shadow(0 0 15px #302d81);
-            animation: fadeInIcon .6s ease forwards .5s, floatAnim 7s ease-in-out infinite 0.5s;
-        }
+        .buy-btn:hover { background: rgba(255, 255, 255, 0.9); transform: scale(1.02); }
+        .label { font-size: 11px; text-transform: uppercase; color: rgba(255, 255, 255, 0.4); letter-spacing: 2px; }
 
-        @keyframes fadeInIcon { to { opacity: 0.35; } }
-        @keyframes floatAnim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(15px); } }
+        /* ─── ANIMATIONS ─── */
+        @keyframes floatAnim { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(12px); } }
+        @keyframes ringRotate { to { transform: rotate(360deg); } }
+        @keyframes wReveal { 0% { transform: scaleX(1); } 100% { transform: scaleX(0); } }
+        @keyframes wChroma { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes wOut { 0% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 100% 0); } }
 
-        @media (max-width: 600px) {
-            .bg-icon { width: 70px; bottom: 20px; }
-        }
+        .animate-float { animation: floatAnim 6s ease-in-out infinite; }
+        .welcome-out-anim { animation: wOut 0.7s cubic-bezier(0.76, 0, 0.24, 1) forwards; }
 
-        #particleCanvas {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 1; pointer-events: none; opacity: 0.6;
-        }
-
-        .store-container { width: 100%; max-width: 850px; position: relative; z-index: 10; }
-
-        .store-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 50px; padding-bottom: 15px;
-            border-bottom: 1px solid var(--gold3);
-        }
-
-        /* شعار vr.png */
-        .brand-logo {
-            height: 48px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 0 10px var(--gold3));
-        }
-
-        .back-btn {
-            background: rgba(201,168,76,0.1); border: 1px solid var(--gold2);
-            color: var(--gold); padding: 8px 18px; border-radius: 5px; text-decoration: none;
-            font-weight: 700; transition: all 0.3s; clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-        }
-        .back-btn:hover { background: var(--gold); color: var(--bg); box-shadow: 0 0 15px var(--gold); }
-
-        .content-wrapper { display: flex; flex-direction: column; gap: 60px; }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--gold);
-            margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px;
-            display: flex; align-items: center; gap: 15px;
-        }
-        .section-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--gold3), transparent); }
-
-        .products-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .product-card {
-            background: rgba(201,168,76,0.03); border: 1px solid rgba(201,168,76,0.2);
-            padding: 20px; transition: all 0.4s ease; border-radius: 4px;
-        }
-        .product-card:hover { border-color: var(--gold); background: rgba(201,168,76,0.07); }
-
-        .product-img-container {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            background: #000;
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid var(--gold3);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .product-img-container img {
-            width: 100%; height: 100%;
-            object-fit: cover; display: block;
-        }
-
-        .product-desc-label {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, transparent 100%);
-            padding: 30px 15px 12px;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
-            color: var(--gold);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
-        }
-
-        .product-info { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
-        .product-title { font-family: 'Orbitron', sans-serif; font-size: 14px; color: #fff; }
-        .product-price { font-size: 24px; font-weight: 900; color: var(--gold); white-space: nowrap; }
-        .price-range   { font-size: 20px; font-weight: 900; color: var(--gold); white-space: nowrap; }
-
-        .sales-badge {
-            display: flex; align-items: center; gap: 8px;
-            background: rgba(201,168,76,0.08);
-            border: 1px solid rgba(201,168,76,0.3);
-            border-radius: 4px; padding: 8px 14px;
-            margin-top: 10px; width: 100%;
-        }
-        .sales-badge .fire-icon { font-size: 16px; }
-        .sales-badge .sales-text {
-            font-family: 'Orbitron', sans-serif; font-size: 11px;
-            color: rgba(255,255,255,0.6); letter-spacing: 1px;
-        }
-        .sales-badge .sales-count {
-            font-family: 'Orbitron', sans-serif; font-size: 14px;
-            font-weight: 900; color: var(--gold);
-            margin-left: auto; min-width: 30px; text-align: right;
-        }
-
-        .buy-now-btn {
-            display: block; width: 100%; padding: 16px; margin-top: 15px;
-            background: linear-gradient(90deg, var(--gold3), var(--gold));
-            color: var(--bg); border: none; font-weight: 900; font-size: 14px;
-            cursor: pointer; text-decoration: none; text-align: center;
-            clip-path: polygon(4% 0, 100% 0, 96% 100%, 0 100%);
-            transition: 0.3s; text-transform: uppercase;
-        }
-        .buy-now-btn:hover { filter: brightness(1.2); box-shadow: 0 0 15px var(--gold); }
-
-        .support-info {
-            margin-top: 40px; background: rgba(201,168,76,0.05);
-            border: 1px dashed var(--gold3); padding: 25px; border-radius: 8px;
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
-        }
-        .info-item h4 { color: var(--gold); font-family: 'Orbitron', sans-serif; font-size: 13px; margin-bottom: 8px; }
-        .info-item p   { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.5; }
-
-        .footer-line { margin-top: 60px; color: var(--gold3); font-size: 14px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; }
-
-        @keyframes countUp {
-            from { opacity: 0; transform: translateY(4px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+        /* RTL Helper */
+        .dir-rtl { direction: rtl; }
     </style>
 </head>
 <body>
+    <div id="cur"></div>
+    <video id="bgvid" autoplay muted loop playsinline disablePictureInPicture style="position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none;">
+        <source src="video_2026-05-10_16-46-49.mp4" type="video/mp4">
+    </video>
+    <div style="position: fixed; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse 90% 80% at 50% 50%, rgba(2,2,8,0.48) 0%, rgba(2,2,8,0.92) 100%), linear-gradient(to bottom, rgba(2,2,8,0.28) 0%, transparent 22%, transparent 70%, rgba(2,2,8,0.65) 100%);"></div>
+    <canvas id="canvas" style="position: fixed; inset: 0; z-index: 2; pointer-events: none;"></canvas>
+    <div class="glow"></div>
 
-    <div class="bg-grid"></div>
-    <canvas id="particleCanvas"></canvas>
+    <img src="am.png" alt="AM" class="animate-float" style="position: fixed; bottom: 40px; left: 20px; width: 110px; z-index: 5; opacity: 0.2; filter: drop-shadow(0 0 15px rgba(255,255,255,0.05));">
+    <img src="ae.png" alt="AE" class="animate-float" style="position: fixed; bottom: 40px; right: 20px; width: 110px; z-index: 5; opacity: 0.2; filter: drop-shadow(0 0 15px rgba(255,255,255,0.05)); animation-delay: 0.5s;">
 
-    <img src="am.png" alt="AM" class="bg-icon bg-am">
-    <img src="ae.png" alt="AE" class="bg-icon bg-ae">
+    <!-- ─── LOADING SCREEN ─── -->
+    <div id="welcome" style="position: fixed; inset: 0; z-index: 800; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; background: #080808;">
+        <div style="position: absolute; width: 600px; height: 400px; background: radial-gradient(circle, rgba(50, 100, 255, 0.15) 0%, transparent 70%); top: -100px; left: 50%; transform: translateX(-50%); pointer-events: none;"></div>
+        <div style="position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); top: 60px;"></div>
+        <div style="position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); bottom: 60px;"></div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; padding: 0 16px;">
+            <div style="font-size: 10px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 5px 14px; border-radius: 99px; background: rgba(255,255,255,0.05);">Est. 2024 &nbsp;·&nbsp; PREMIUM TOOLS &amp; DESIGN</div>
+            <div style="font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 48px; font-weight: bold; letter-spacing: -1px; line-height: 1; color: #fff; position: relative; margin-top: 10px;">
+                IRAQI PRO STORE
+            </div>
+            <div style="font-size: 11px; font-weight: 300; letter-spacing: 6px; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-top: -8px;">Optimization &nbsp;·&nbsp; Professional Designs &nbsp;·&nbsp; Support</div>
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 16px;">
+                <div style="width: 180px; height: 1px; background: rgba(255,255,255,0.07); overflow: hidden; border-radius: 99px; position: relative;">
+                    <div id="welcome-bar" style="height: 100%; background: #fff; width: 0%; transition: width 0.1s ease-out;"></div>
+                </div>
+                <div id="welcome-pct" style="font-size: 10px; font-family: monospace; letter-spacing: 1px; color: rgba(255,255,255,0.2);">0%</div>
+            </div>
+        </div>
+    </div>
 
-    <div class="store-container">
-        <div class="store-header">
-            <img src="vr.png" alt="IRAQI" class="brand-logo">
-            <a href="index.html" class="back-btn">RETURN</a>
+    <!-- ─── MAIN CONTENT WRAPPER ─── -->
+    <div id="page" style="position: relative; z-index: 10; max-width: 850px; margin: 0 auto; padding: 70px 16px 90px; display: flex; flex-direction: column; gap: 48px; opacity: 0; transform: translateY(24px); transition: opacity 1s, transform 1s;">
+        
+        <!-- ─── HERO PANEL / HEADER ─── -->
+        <div class="glass-card" style="padding: 40px; display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: 0; left: 8%; right: 8%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); border-radius: 99px;"></div>
+            <div style="position: absolute; bottom: 0; left: 22%; right: 22%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); border-radius: 99px;"></div>
+            
+            <div style="position: relative; width: 96px; height: 96px; margin-bottom: 24px;">
+                <div style="position: absolute; inset: -2px; border-radius: 50%; background: rgba(255, 255, 255, 0.2);"></div>
+                <div style="position: absolute; inset: 2px; border-radius: 50%; background: #080808;"></div>
+                <img src="vr.png" alt="IRAQI" style="position: relative; z-index: 10; width: 96px; height: 96px; border-radius: 50%; object-fit: cover; padding: 8px;">
+            </div>
+
+            <div class="label" style="margin-bottom: 8px;">مجموعة مختارة بعناية</div>
+            <h1 style="font-size: 48px; font-weight: bold; letter-spacing: -1px; line-height: 0.9; color: #fff;">
+                IRAQI PRO STORE
+            </h1>
+            <div style="font-size: 12px; letter-spacing: 5px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 16px; margin-bottom: 8px;">
+                @Design_AfterEffects
+            </div>
+            <p style="font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.3); letter-spacing: 1.5px; max-width: 500px; line-height: 1.6;">
+                Premium Tools &bull; Professional Designs &bull; Optimizations &amp; High Framerates
+            </p>
         </div>
 
-        <div class="content-wrapper">
+        <div style="width: 52px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); margin: 0 auto;"></div>
 
+        <!-- ─── PRODUCTS SECTION ─── -->
+        <div style="display: flex; flex-direction: column; gap: 64px;">
+            
             <!-- ====== UNIT 1 ====== -->
-            <section>
-                <h2 class="section-title">EVERY TOOLS</h2>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-img-container">
-                            <img src="1.PNG" alt="Product 1">
-                            <div class="product-desc-label"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Every detail of precision and tools</h3>
-                            <span class="product-price">$20.00</span>
-                        </div>
-                        <div class="sales-badge">
-                            <span class="fire-icon">🔥</span>
-                            <span class="sales-text">TOTAL PURCHASES</span>
-                            <span class="sales-count" id="count1">17</span>
-                        </div>
-                        <a class="buy-now-btn" onclick="handleBuy('count1','Every detail of precision and tools')">BUY VIA TELEGRAM</a>
+            <section style="display: flex; flex-direction: column;">
+                <div style="margin-bottom: 32px; position: relative;">
+                    <span class="label">الأقسام المميزة</span>
+                    <h2 style="font-size: 28px; font-weight: bold; color: #fff; margin-top: 4px;">EVERY TOOLS</h2>
+                    <div style="height: 1px; width: 100%; margin-top: 12px; background: rgba(255, 255, 255, 0.1);"></div>
+                </div>
+                <div class="glass-card" style="padding: 24px;">
+                    <div style="width: 100%; aspect-ratio: 4/5; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                        <img src="1.PNG" alt="Product 1" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 30px 16px 16px; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-align: center; letter-spacing: 1.5px;">EVERY DETAIL OF PRECISION</div>
                     </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+                        <div style="font-size: 18px; font-weight: 600;">Every detail of precision and tools</div>
+                        <div class="price-tag text-2xl font-bold" style="color: #fff;">$20.00</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 16px; margin-bottom: 16px;">
+                        <span style="font-size: 14px;">⚡</span>
+                        <span class="label" style="font-size: 11px;">TOTAL PURCHASES</span>
+                        <span id="count1" class="price-tag text-lg font-bold" style="margin-right: auto; color: #fff;">17</span>
+                    </div>
+                    <button class="buy-btn" onclick="handleBuy('count1', 'Every detail of precision and tools')">BUY VIA TELEGRAM</button>
                 </div>
             </section>
 
             <!-- ====== UNIT 2 ====== -->
-            <section>
-                <h2 class="section-title">Free Fire settings</h2>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-img-container">
-                            <img src="2.PNG" alt="Product 2">
-                            <div class="product-desc-label"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Free Fire settings with optimization and frame rates</h3>
-                            <span class="product-price">$21.00</span>
-                        </div>
-                        <div class="sales-badge">
-                            <span class="fire-icon">🔥</span>
-                            <span class="sales-text">TOTAL PURCHASES</span>
-                            <span class="sales-count" id="count2">22</span>
-                        </div>
-                        <a class="buy-now-btn" onclick="handleBuy('count2','Free Fire settings with optimization and frame rates')">BUY VIA TELEGRAM</a>
+            <section style="display: flex; flex-direction: column;">
+                <div style="margin-bottom: 32px; position: relative;">
+                    <span class="label">الأقسام المميزة</span>
+                    <h2 style="font-size: 28px; font-weight: bold; color: #fff; margin-top: 4px;">FREE FIRE SETTINGS</h2>
+                    <div style="height: 1px; width: 100%; margin-top: 12px; background: rgba(255, 255, 255, 0.1);"></div>
+                </div>
+                <div class="glass-card" style="padding: 24px;">
+                    <div style="width: 100%; aspect-ratio: 4/5; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                        <img src="2.PNG" alt="Product 2" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 30px 16px 16px; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-align: center; letter-spacing: 1.5px;">OPTIMIZATION &amp; FRAMERATES</div>
                     </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+                        <div style="font-size: 18px; font-weight: 600;">Free Fire settings with optimization and frame rates</div>
+                        <div class="price-tag text-2xl font-bold" style="color: #fff;">$21.00</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 16px; margin-bottom: 16px;">
+                        <span style="font-size: 14px;">⚡</span>
+                        <span class="label" style="font-size: 11px;">TOTAL PURCHASES</span>
+                        <span id="count2" class="price-tag text-lg font-bold" style="margin-right: auto; color: #fff;">22</span>
+                    </div>
+                    <button class="buy-btn" onclick="handleBuy('count2', 'Free Fire settings with optimization and frame rates')">BUY VIA TELEGRAM</button>
                 </div>
             </section>
 
             <!-- ====== UNIT 3 ====== -->
-            <section>
-                <h2 class="section-title">DESIGN</h2>
-                <div class="products-grid">
-                    <div class="product-card">
-                        <div class="product-img-container">
-                            <img src="3.PNG" alt="Product 3">
-                            <div class="product-desc-label"></div>
-                        </div>
-                        <div class="product-info">
-                            <h3 class="product-title">Design request</h3>
-                            <span class="price-range">$5 — $100</span>
-                        </div>
-                        <div class="sales-badge">
-                            <span class="fire-icon">🔥</span>
-                            <span class="sales-text">TOTAL PURCHASES</span>
-                            <span class="sales-count" id="count3">31</span>
-                        </div>
-                        <a class="buy-now-btn" onclick="handleBuy('count3','Design request')">BUY VIA TELEGRAM</a>
+            <section style="display: flex; flex-direction: column;">
+                <div style="margin-bottom: 32px; position: relative;">
+                    <span class="label">الأقسام المميزة</span>
+                    <h2 style="font-size: 28px; font-weight: bold; color: #fff; margin-top: 4px;">DESIGN</h2>
+                    <div style="height: 1px; width: 100%; margin-top: 12px; background: rgba(255, 255, 255, 0.1);"></div>
+                </div>
+                <div class="glass-card" style="padding: 24px;">
+                    <div style="width: 100%; aspect-ratio: 4/5; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                        <img src="3.PNG" alt="Product 3" style="width: 100%; height: 100%; object-fit: cover;">
+                        <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 30px 16px 16px; font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.6); text-align: center; letter-spacing: 1.5px;">CUSTOM REQUESTS</div>
                     </div>
-                </div>
-            </section>
-
-            <section class="support-info">
-                <div class="info-item">
-                    <h4>📦 DELIVERY</h4>
-                    <p>يتم تسليم الملفات مباشرة عبر التليجرام بصيغة RAR أو AEP فور تأكيد الدفع.</p>
-                </div>
-                <div class="info-item">
-                    <h4>💳 PAYMENT</h4>
-                    <p> Zain Cash، GOOGLE PLAY، و PayPal.  تواصل معنا لتأكيد التحويل  .</p>
-                </div>
-                <div class="info-item">
-                    <h4>🛠 IRAQI SUPPORT</h4>
-                    <p>للمساعدة الفنية أو الاستفسارات، فريق IRAQI متواجد دائماً لخدمتكم عبر التليجرام.</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+                        <div style="font-size: 18px; font-weight: 600;">Design request</div>
+                        <div class="price-tag text-2xl font-bold" style="color: #fff;">$5 — $100</div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 12px 20px; border-radius: 16px; margin-bottom: 16px;">
+                        <span style="font-size: 14px;">⚡</span>
+                        <span class="label" style="font-size: 11px;">TOTAL PURCHASES</span>
+                        <span id="count3" class="price-tag text-lg font-bold" style="margin-right: auto; color: #fff;">31</span>
+                    </div>
+                    <button class="buy-btn" onclick="handleBuy('count3', 'Design request')">BUY VIA TELEGRAM</button>
                 </div>
             </section>
         </div>
 
-        <center><p class="footer-line">محمد فؤاد</p></center>
+        <!-- ─── SUPPORT INFO ─── -->
+        <section class="dir-rtl" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+            <div class="glass-card" style="padding: 24px; text-align: right; position: relative; overflow: hidden;">
+                <h4 class="label" style="color: #999; margin-bottom: 12px;">📦 DELIVERY</h4>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">يتم تسليم الملفات مباشرة عبر التليجرام بصيغة RAR أو AEP فور تأكيد الدفع.</p>
+            </div>
+            <div class="glass-card" style="padding: 24px; text-align: right; position: relative; overflow: hidden;">
+                <h4 class="label" style="color: #999; margin-bottom: 12px;">💳 PAYMENT</h4>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">Zain Cash، GOOGLE PLAY، و PayPal. تواصل معنا لتأكيد التحويل.</p>
+            </div>
+            <div class="glass-card" style="padding: 24px; text-align: right; position: relative; overflow: hidden;">
+                <h4 class="label" style="color: #999; margin-bottom: 12px;">🛠 IRAQI SUPPORT</h4>
+                <p style="font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6;">للمساعدة الفنية أو الاستفسارات، فريق IRAQI متواجد دائماً لخدمتكم عبر التليجرام.</p>
+            </div>
+        </section>
+
+        <!-- ─── FOOTER ─── -->
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 32px;">
+            <p style="font-size: 14px; letter-spacing: 5px; color: rgba(255,255,255,0.4); text-transform: uppercase;">محمد فؤاد</p>
+            <p style="font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,0.15);">&copy; 2026 IRAQI PRO STORE &bull; ALL RIGHTS RESERVED</p>
+        </div>
     </div>
 
     <script>
-        /* ─── Particles ─── */
-        const pc = document.getElementById('particleCanvas');
-        const ctx = pc.getContext('2d');
-        let pts = [];
-        function initParticles() {
-            pc.width = window.innerWidth; pc.height = window.innerHeight;
-            pts = Array.from({length: 40}, () => ({
-                x: Math.random() * pc.width, y: Math.random() * pc.height,
-                r: Math.random() * 1.5, s: Math.random() * 0.4 + 0.1
-            }));
-        }
-        function draw() {
-            ctx.clearRect(0, 0, pc.width, pc.height);
-            ctx.fillStyle = "#ffd700";
-            pts.forEach(p => {
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-                p.y += p.s; if (p.y > pc.height) p.y = 0;
-            });
-            requestAnimationFrame(draw);
-        }
-        window.addEventListener('resize', initParticles);
-        initParticles(); draw();
+        /* ─── CURSOR MOVEMENT ─── */
+        const cur = document.getElementById('cur');
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px';
+            cur.style.top  = e.clientY + 'px';
+        }, { passive: true });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cur.classList.add('big'));
+            el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+        });
 
-        /* ─── Counter ─── */
+        /* ─── LOADING PROGRESS ─── */
+        const welcomePct = document.getElementById('welcome-pct');
+        const welcomeBar = document.getElementById('welcome-bar');
+        let pct = 0;
+        const pctInterval = setInterval(() => {
+            pct = Math.min(100, pct + Math.floor(Math.random() * 8) + 3);
+            welcomePct.textContent = pct + '%';
+            welcomeBar.style.width = pct + '%';
+            if (pct >= 100) {
+                clearInterval(pctInterval);
+                setTimeout(() => {
+                    const w = document.getElementById('welcome');
+                    w.classList.add('welcome-out-anim');
+                    setTimeout(() => {
+                        w.style.display = 'none';
+                        const p = document.getElementById('page');
+                        p.style.opacity = '1';
+                        p.style.transform = 'translateY(0)';
+                    }, 720);
+                }, 400);
+            }
+        }, 80);
+
+        /* ─── PARTICLES CANVAS ─── */
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let W, H, pts = [];
+        function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+        function mkPt() {
+            return { x: Math.random()*W, y: Math.random()*H, vx: (Math.random()-.5)*.3, vy: (Math.random()-.5)*.3, r: Math.random()*1.3+.35, a: Math.random()*Math.PI*2 };
+        }
+        for (let i=0;i<72;i++) pts.push(mkPt());
+        (function draw() {
+            ctx.clearRect(0,0,W,H);
+            pts.forEach(p => {
+                p.x+=p.vx; p.y+=p.vy;
+                if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+                if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+                p.a+=.005;
+                const al=(Math.sin(p.a)*.5+.5)*.4+.05;
+                ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+                ctx.fillStyle=`rgba(170,150,255,${al})`; ctx.fill();
+            });
+            for(let i=0;i<pts.length;i++){
+                for(let j=i+1;j<pts.length;j++){
+                    const dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+                    const d=Math.sqrt(dx*dx+dy*dy);
+                    if(d<125){
+                        ctx.beginPath();
+                        ctx.moveTo(pts[i].x,pts[i].y);
+                        ctx.lineTo(pts[j].x,pts[j].y);
+                        ctx.strokeStyle=`rgba(150,130,255,${(1-d/125)*.1})`;
+                        ctx.lineWidth=.5; ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(draw);
+        })();
+
+        /* ─── LOCAL STORAGE COUNTERS ─── */
         const DEFAULTS = { count1: 17, count2: 22, count3: 31 };
         const KEYS     = { count1: 'iraqi_s1', count2: 'iraqi_s2', count3: 'iraqi_s3' };
 
@@ -327,19 +305,13 @@
             });
         }
 
-        /* ─── Handle buy: increment + open Telegram ─── */
         function handleBuy(countId, productName) {
-            /* increment counter */
             const el = document.getElementById(countId);
             let val = parseInt(el.textContent) || DEFAULTS[countId];
             val += 1;
             el.textContent = val;
-            el.style.animation = 'none';
-            void el.offsetHeight;
-            el.style.animation = 'countUp 0.4s ease';
             localStorage.setItem(KEYS[countId], val);
 
-            /* open telegram with product name */
             const msg = encodeURIComponent('Hello! I want to buy: ' + productName);
             window.open('https://t.me/Design_AfterEffects?text=' + msg, '_blank');
         }
