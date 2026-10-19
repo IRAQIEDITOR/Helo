@@ -2,13 +2,126 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#080808">
 <title>IRAQI TIK | Store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}html{width:100%;min-height:100%;background:#080808;-webkit-text-size-adjust:100%;text-size-adjust:100%}body{width:100%;min-height:100vh;background:#080808;color:#fff;font-family:'Inter',Arial,sans-serif;overflow-x:hidden}img{max-width:100%;display:block}button{font:inherit}.glass{background:rgba(255,255,255,.035);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:24px}.label{font-size:11px;text-transform:uppercase;color:rgba(255,255,255,.42);letter-spacing:2px}.price{font-family:'Courier New',monospace}.page{position:relative;z-index:10;width:min(100%,850px);margin:auto;padding:70px 16px 90px;display:flex;flex-direction:column;gap:48px;opacity:0;transform:translateY(24px);transition:1s}.hero{padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center}.hero-title{font-size:48px;font-weight:800;line-height:.95}.poster-wrap{width:min(100%,520px);margin:0 auto 24px}.poster-frame{position:relative;width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#050505;border:1px solid rgba(255,255,255,.06)}.poster-frame img{width:100%;height:100%;object-fit:cover;object-position:center 44%}.poster-cap{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 14px;background:linear-gradient(to top,rgba(0,0,0,.95),transparent);font-size:10px;letter-spacing:1.2px;text-align:center;color:rgba(255,255,255,.75);direction:ltr}.product-card{padding:24px}.product-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px}.counter{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);padding:12px 16px;border-radius:16px;margin-bottom:18px}.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}.plan{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px}.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}.feature{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);padding:13px;border-radius:16px}.icon{width:38px;height:38px;flex:0 0 38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;background:rgba(255,255,255,.05)}.feature strong{display:block;font-size:13px}.feature span{display:block;font-size:11px;color:rgba(255,255,255,.6);line-height:1.45}.buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}.buy{border:0;border-radius:50px;padding:14px 20px;font-weight:800;font-size:14px;background:#fff;color:#000;cursor:pointer}.buy.alt{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.18)}.support{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.support>div{padding:22px}.bgvid{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}.shade{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 90% 80% at 50% 50%,rgba(2,2,8,.48),rgba(2,2,8,.92)),linear-gradient(to bottom,rgba(2,2,8,.28),transparent 22%,transparent 70%,rgba(2,2,8,.65))}.floating{position:fixed;bottom:40px;width:110px;z-index:5;opacity:.2}.left{left:20px}.right{right:20px}@media(max-width:680px){body{font-size:14px}.page{width:100%;padding:28px 12px 56px;gap:26px}.hero{padding:24px 16px;border-radius:20px}.hero-title{font-size:34px}.hero p{font-size:12px!important;line-height:1.8}.product-card{padding:14px;border-radius:20px}.poster-wrap{width:100%;max-width:430px;margin-bottom:16px}.poster-frame{aspect-ratio:4/5;border-radius:14px}.poster-cap{font-size:9px;padding:34px 10px 10px}.product-head{display:block}.product-head .price{font-size:24px!important;margin-top:12px}.plans{grid-template-columns:1fr}.features{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.feature{padding:10px;gap:8px}.icon{width:34px;height:34px;flex-basis:34px;font-size:13px}.buttons{grid-template-columns:1fr}.buy{min-height:48px}.support{grid-template-columns:1fr}.floating{width:62px;bottom:14px;opacity:.12}.left{left:8px}.right{right:8px}.label{font-size:10px;letter-spacing:1.4px}}@media(max-width:390px){.page{padding-left:9px;padding-right:9px}.hero-title{font-size:30px}.features{grid-template-columns:1fr}.product-card{padding:11px}}</style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{width:100%;min-height:100%;background:#080808;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{width:100%;min-height:100vh;background:#080808;color:#fff;font-family:'Inter',Arial,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+button{font:inherit}
+.glass{background:rgba(255,255,255,.035);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);border-radius:24px}
+.label{font-size:11px;text-transform:uppercase;color:rgba(255,255,255,.42);letter-spacing:2px}
+.price{font-family:'Courier New',monospace}
+.page{position:relative;z-index:10;width:100%;max-width:850px;margin:0 auto;padding:70px 16px 90px;display:flex;flex-direction:column;gap:48px;opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.hero{padding:40px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.hero-title{font-size:48px;font-weight:800;line-height:.95}
+.poster-wrap{width:100%;max-width:520px;margin:0 auto 24px}
+.poster-frame{position:relative;width:100%;border-radius:18px;overflow:hidden;background:#050505;border:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.poster-frame img{width:auto;max-width:100%;height:auto;max-height:620px;object-fit:contain;object-position:center}
+.poster-cap{position:absolute;left:0;right:0;bottom:0;padding:38px 14px 14px;background:linear-gradient(to top,rgba(0,0,0,.95),transparent);font-size:10px;letter-spacing:1.2px;text-align:center;color:rgba(255,255,255,.75);direction:ltr}
+.product-card{padding:24px}
+.product-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.counter{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);padding:12px 16px;border-radius:16px;margin-bottom:18px}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:18px}
+.plan{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:18px}
+.features{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:20px}
+.feature{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.06);padding:13px;border-radius:16px;min-width:0}
+.icon{width:38px;height:38px;flex:0 0 38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;background:rgba(255,255,255,.05)}
+.feature strong{display:block;font-size:13px}.feature span{display:block;font-size:11px;color:rgba(255,255,255,.6);line-height:1.45}
+.buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.buy{border:0;border-radius:50px;padding:14px 20px;font-weight:800;font-size:14px;background:#fff;color:#000;cursor:pointer;min-height:50px}
+.buy.alt{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.18)}
+.support{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.support>div{padding:22px}
+.bgvid{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
+.shade{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 90% 80% at 50% 50%,rgba(2,2,8,.48),rgba(2,2,8,.92)),linear-gradient(to bottom,rgba(2,2,8,.28),transparent 22%,transparent 70%,rgba(2,2,8,.65))}
+.floating{position:fixed;bottom:40px;width:110px;z-index:5;opacity:.2}.left{left:20px}.right{right:20px}
+@media(max-width:768px){
+ body{font-size:14px}
+ .page{max-width:none;width:100vw;padding:20px 10px 48px;gap:22px}
+ .hero{padding:22px 14px;border-radius:18px}
+ .hero-title{font-size:32px;line-height:1}
+ .hero p{font-size:12px!important;line-height:1.75;max-width:100%}
+ .label{font-size:9px;letter-spacing:1.3px}
+ .product-card{padding:12px;border-radius:18px}
+ .poster-wrap{max-width:100%;margin-bottom:14px}
+ .poster-frame{width:100%;border-radius:14px;min-height:0}
+ .poster-frame img{width:auto;max-width:100%;height:auto;max-height:58vh;object-fit:contain}
+ .poster-cap{font-size:8px;padding:28px 8px 8px;letter-spacing:.7px}
+ .product-head{display:block;margin-bottom:14px}
+ .product-head>div:first-child>div:first-child{font-size:19px!important}
+ .product-head .price{font-size:23px!important;margin-top:10px}
+ .counter{padding:10px 12px;margin-bottom:14px}
+ .plans{grid-template-columns:1fr;gap:10px;margin-bottom:14px}
+ .plan{padding:15px}
+ .features{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:14px}
+ .feature{padding:9px;gap:8px;border-radius:13px}
+ .icon{width:32px;height:32px;flex-basis:32px;font-size:12px}
+ .feature strong{font-size:12px}.feature span{font-size:10px}
+ .buttons{grid-template-columns:1fr;gap:10px;margin-top:16px}
+ .buy{width:100%;font-size:13px;padding:13px 14px}
+ .support{grid-template-columns:1fr;gap:10px}.support>div{padding:16px}
+ .floating{display:none}
+ h2{font-size:22px!important;line-height:1.25}
+}
+@media(max-width:390px){
+ .page{padding-left:8px;padding-right:8px}
+ .hero-title{font-size:29px}
+ .features{grid-template-columns:1fr}
+ .product-card{padding:10px}
+ .poster-frame img{max-height:54vh}
+}
+</style>
 </head>
-<body><video class="bgvid" autoplay muted loop playsinline disablePictureInPicture><source src="video_2026-05-10_16-46-49.mp4" type="video/mp4"></video><div class="shade"></div><img src="am.png" class="floating left" alt=""><img src="ae.png" class="floating right" alt=""><div id="page" class="page"><section class="glass hero"><div style="width:86px;height:86px;margin-bottom:20px"><img src="lg.png" alt="IRAQI" style="width:86px;height:86px;border-radius:50%;object-fit:cover;padding:7px"></div><div class="label" style="margin-bottom:8px">منتج واحد باحترافية عالية</div><h1 class="hero-title">IRAQI TIK</h1><div style="font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.42);margin:14px 0 8px">@Design_AfterEffects</div><p style="font-size:13px;color:rgba(255,255,255,.58);max-width:560px;line-height:1.75">أداة احترافية لتحسين جودة الفيديو ورفعه بجودة عالية على تيك توك، متوفرة للكمبيوتر والجوال.</p></section><section><div style="margin-bottom:20px"><span class="label">المنتج المميز</span><h2 style="font-size:28px;margin-top:4px">IRAQI TIK QUALITY TOOL</h2></div><div class="glass product-card"><div class="poster-wrap"><div class="poster-frame"><img src="iraqi_tik_poster.jpg" alt="IRAQI TIK"><div class="poster-cap">4K QUALITY • TIKTOK UPLOAD • PC & MOBILE APK</div></div></div><div class="product-head"><div><div style="font-size:21px;font-weight:700;margin-bottom:6px">IRAQI TIK</div><div style="font-size:13px;color:rgba(255,255,255,.62);line-height:1.7;max-width:520px">تحسين جودة الفيديو ورفع المحتوى بشكل احترافي على تيك توك للكمبيوتر والجوال.</div></div><div class="price" style="font-size:28px;font-weight:800">$8 — $10</div></div><div class="counter"><span>⚡</span><span class="label">TOTAL PURCHASES</span><span id="count1" class="price" style="margin-right:auto;font-size:20px;font-weight:700">17</span></div><div class="plans"><div class="plan"><div class="label" style="margin-bottom:8px">نسخة الكمبيوتر</div><div style="font-size:18px;font-weight:700">PC Version</div><div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:6px">اشتراك شهري لأداة الجودة على الكمبيوتر.</div><div class="price" style="font-size:32px;font-weight:800;margin-top:10px">$10 <span style="font-size:13px;font-weight:500;color:#aaa">/ month</span></div></div><div class="plan"><div class="label" style="margin-bottom:8px">نسخة الجوال</div><div style="font-size:18px;font-weight:700">Mobile APK</div><div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:6px">اشتراك شهري لنسخة APK الخاصة بالجوال.</div><div class="price" style="font-size:32px;font-weight:800;margin-top:10px">$8 <span style="font-size:13px;font-weight:500;color:#aaa">/ month</span></div></div></div><div class="features"><div class="feature"><div class="icon">4K</div><div><strong>جودة 4K</strong><span>وضوح عالي للفيديو.</span></div></div><div class="feature"><div class="icon">⚡</div><div><strong>تحسين تلقائي</strong><span>جودة أفضل بسرعة.</span></div></div><div class="feature"><div class="icon">HD</div><div><strong>حفظ الجودة</strong><span>تقليل الضغط والتشويش.</span></div></div><div class="feature"><div class="icon">⇪</div><div><strong>رفع مباشر</strong><span>مناسب لتيك توك.</span></div></div><div class="feature"><div class="icon">APK</div><div><strong>دعم الجوال</strong><span>نسخة للهواتف.</span></div></div><div class="feature"><div class="icon">PC</div><div><strong>دعم الكمبيوتر</strong><span>نسخة مستقرة للـ PC.</span></div></div></div><div class="buttons"><button class="buy" onclick="buy('IRAQI TIK - PC Version')">BUY PC VIA TELEGRAM</button><button class="buy alt" onclick="buy('IRAQI TIK - Mobile APK')">BUY MOBILE APK</button></div></div></section><section class="support"><div class="glass"><div class="label" style="margin-bottom:10px">📦 DELIVERY</div><p style="font-size:13px;color:#bbb;line-height:1.7">يتم تسليم النسخة المطلوبة عبر التليجرام بعد تأكيد الدفع.</p></div><div class="glass"><div class="label" style="margin-bottom:10px">💳 PAYMENT</div><p style="font-size:13px;color:#bbb;line-height:1.7">Zain Cash، Google Play، وPayPal.</p></div><div class="glass"><div class="label" style="margin-bottom:10px">🛠 IRAQI SUPPORT</div><p style="font-size:13px;color:#bbb;line-height:1.7">الدعم الفني متوفر عبر التليجرام.</p></div></section><div style="text-align:center;border-top:1px solid rgba(255,255,255,.06);padding-top:26px"><div style="font-size:13px;letter-spacing:4px;color:#777">محمد فؤاد</div><div style="font-size:9px;color:#444;margin-top:8px">© 2026 IRAQI TIK STORE • ALL RIGHTS RESERVED</div></div></div><script>const page=document.getElementById('page');window.addEventListener('load',()=>{page.style.opacity='1';page.style.transform='translateY(0)'});const key='iraqi_tik_store_count';const count=document.getElementById('count1');count.textContent=localStorage.getItem(key)||'17';function buy(name){let n=parseInt(count.textContent)||17;n++;count.textContent=n;localStorage.setItem(key,n);window.open('https://t.me/Design_AfterEffects?text='+encodeURIComponent('Hello! I want to buy: '+name),'_blank')}</script></body></html>
+<body>
+<video class="bgvid" autoplay muted loop playsinline disablePictureInPicture><source src="video_2026-05-10_16-46-49.mp4" type="video/mp4"></video>
+<div class="shade"></div>
+<img src="am.png" class="floating left" alt="">
+<img src="ae.png" class="floating right" alt="">
+<div id="page" class="page">
+<section class="glass hero">
+<div style="width:86px;height:86px;margin-bottom:20px"><img src="lg.png" alt="IRAQI" style="width:86px;height:86px;border-radius:50%;object-fit:cover;padding:7px"></div>
+<div class="label" style="margin-bottom:8px">منتج واحد باحترافية عالية</div>
+<h1 class="hero-title">IRAQI TIK</h1>
+<div style="font-size:11px;letter-spacing:4px;color:rgba(255,255,255,.42);margin:14px 0 8px">@Design_AfterEffects</div>
+<p style="font-size:13px;color:rgba(255,255,255,.58);max-width:560px;line-height:1.75">أداة احترافية لتحسين جودة الفيديو ورفعه بجودة عالية على تيك توك، متوفرة للكمبيوتر والجوال.</p>
+</section>
+<section>
+<div style="margin-bottom:18px"><span class="label">المنتج المميز</span><h2 style="font-size:28px;margin-top:4px">IRAQI TIK QUALITY TOOL</h2></div>
+<div class="glass product-card">
+<div class="poster-wrap"><div class="poster-frame"><img src="iraqi_tik_poster.webp" alt="IRAQI TIK"><div class="poster-cap">4K QUALITY • TIKTOK UPLOAD • PC & MOBILE APK</div></div></div>
+<div class="product-head"><div><div style="font-size:21px;font-weight:700;margin-bottom:6px">IRAQI TIK</div><div style="font-size:13px;color:rgba(255,255,255,.62);line-height:1.7;max-width:520px">تحسين جودة الفيديو ورفع المحتوى بشكل احترافي على تيك توك للكمبيوتر والجوال.</div></div><div class="price" style="font-size:28px;font-weight:800">$8 — $10</div></div>
+<div class="counter"><span>⚡</span><span class="label">TOTAL PURCHASES</span><span id="count1" class="price" style="margin-right:auto;font-size:20px;font-weight:700">17</span></div>
+<div class="plans">
+<div class="plan"><div class="label" style="margin-bottom:8px">نسخة الكمبيوتر</div><div style="font-size:18px;font-weight:700">PC Version</div><div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:6px">اشتراك شهري لأداة الجودة على الكمبيوتر.</div><div class="price" style="font-size:32px;font-weight:800;margin-top:10px">$10 <span style="font-size:13px;font-weight:500;color:#aaa">/ month</span></div></div>
+<div class="plan"><div class="label" style="margin-bottom:8px">نسخة الجوال</div><div style="font-size:18px;font-weight:700">Mobile APK</div><div style="font-size:13px;color:rgba(255,255,255,.65);margin-top:6px">اشتراك شهري لنسخة APK الخاصة بالجوال.</div><div class="price" style="font-size:32px;font-weight:800;margin-top:10px">$8 <span style="font-size:13px;font-weight:500;color:#aaa">/ month</span></div></div>
+</div>
+<div class="features">
+<div class="feature"><div class="icon">4K</div><div><strong>جودة 4K</strong><span>وضوح عالي للفيديو.</span></div></div>
+<div class="feature"><div class="icon">⚡</div><div><strong>تحسين تلقائي</strong><span>جودة أفضل بسرعة.</span></div></div>
+<div class="feature"><div class="icon">HD</div><div><strong>حفظ الجودة</strong><span>تقليل الضغط والتشويش.</span></div></div>
+<div class="feature"><div class="icon">⇪</div><div><strong>رفع مباشر</strong><span>مناسب لتيك توك.</span></div></div>
+<div class="feature"><div class="icon">APK</div><div><strong>دعم الجوال</strong><span>نسخة للهواتف.</span></div></div>
+<div class="feature"><div class="icon">PC</div><div><strong>دعم الكمبيوتر</strong><span>نسخة مستقرة للـ PC.</span></div></div>
+</div>
+<div class="buttons"><button class="buy" onclick="buy('IRAQI TIK - PC Version')">BUY PC VIA TELEGRAM</button><button class="buy alt" onclick="buy('IRAQI TIK - Mobile APK')">BUY MOBILE APK</button></div>
+</div>
+</section>
+<section class="support">
+<div class="glass"><div class="label" style="margin-bottom:10px">📦 DELIVERY</div><p style="font-size:13px;color:#bbb;line-height:1.7">يتم تسليم النسخة المطلوبة عبر التليجرام بعد تأكيد الدفع.</p></div>
+<div class="glass"><div class="label" style="margin-bottom:10px">💳 PAYMENT</div><p style="font-size:13px;color:#bbb;line-height:1.7">Zain Cash، Google Play، وPayPal.</p></div>
+<div class="glass"><div class="label" style="margin-bottom:10px">🛠 IRAQI SUPPORT</div><p style="font-size:13px;color:#bbb;line-height:1.7">الدعم الفني متوفر عبر التليجرام.</p></div>
+</section>
+<div style="text-align:center;border-top:1px solid rgba(255,255,255,.06);padding-top:26px"><div style="font-size:13px;letter-spacing:4px;color:#777">محمد فؤاد</div><div style="font-size:9px;color:#444;margin-top:8px">© 2026 IRAQI TIK STORE • ALL RIGHTS RESERVED</div></div>
+</div>
+<script>
+const page=document.getElementById('page');window.addEventListener('load',()=>{page.style.opacity='1';page.style.transform='translateY(0)'});
+const key='iraqi_tik_store_count';const count=document.getElementById('count1');count.textContent=localStorage.getItem(key)||'17';
+function buy(name){let n=parseInt(count.textContent)||17;n++;count.textContent=n;localStorage.setItem(key,n);window.open('https://t.me/Design_AfterEffects?text='+encodeURIComponent('Hello! I want to buy: '+name),'_blank')}
+</script>
+</body>
+</html>
